@@ -63,10 +63,12 @@ var io = require('socket.io').listen(server);
 // Configuration of chat
 io.on('connection', function(socket) {
     console.log('A client has just connected!!');
+    socket.emit('server-to-client-message', 'Hi how may I help you?');
 
     socket.on('client-to-server-message', function(message) {
         console.log('Server received a message: ' + message);
-        socket.emit('server-to-client-message', 'hi, did you just say:' + message + '?');
+
+        socket.emit('server-to-client-message', 'Sorry, did you just say:' + message + '?');
     });
 
 
