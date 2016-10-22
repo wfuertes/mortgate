@@ -108,7 +108,7 @@ var question3 = {
 var question4 = {
     pos: 4,
     question: 'Do you have a credit Report?',
-    answer: null, 
+    answer: null,
     no_skip_next_question: true,
     no_compl: 'No problem!',
     yes_compl: 'Cool'
@@ -150,26 +150,26 @@ io.on('connection', function(socket) {
     socket.emit('server-to-client-message', questions[questionCount].question);
 
     socket.on('client-to-server-message', function(message) {
-            console.log('Server received a message: ' + message);
-            socket.emit('server-to-client-message', message);
+        console.log('Server received a message: ' + message);
+        socket.emit('server-to-client-message', message);
 
-            questions[questionCount].answer = message;
+        questions[questionCount].answer = message;
 
-            // Do you know anything about mortgages?
-            if (isItANegativeAnswer(message)) {
-                if (questions[questionCount].no_compl) {
-                    socket.emit('server-to-client-message', questions[questionCount].no_compl);
-                }
-                if (questions[questionCount].no_ends_conversation) {
-                    // Disconnect.
-                    socket.disconnect(0);
-                }
-            } else {
-                if (questions[questionCount].yes_compl) {
-                  socket.emit('server-to-client-message', questions[questionCount].yes_compl);
-                }
+        // Do you know anything about mortgages?
+        if (isItANegativeAnswer(message)) {
+            if (questions[questionCount].no_compl) {
+                socket.emit('server-to-client-message', questions[questionCount].no_compl);
+            }
+            if (questions[questionCount].no_ends_conversation) {
+                // Disconnect.
+                socket.disconnect(0);
+            }
+        } else {
+            if (questions[questionCount].yes_compl) {
+                socket.emit('server-to-client-message', questions[questionCount].yes_compl);
             }
         }
+
 
         if (isItANegativeAnswer(message) && questions[questionCount].no_skip_next_question) {
             questionCount = questionCount + 2;

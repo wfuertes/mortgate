@@ -1,5 +1,5 @@
 // Opens connection to socket
-var socket = io("http://127.0.0.1:3000");
+var socket = io("http://127.0.0.1:3001");
 
 socket.on('connection', function(socket) {
     console.log('Connected to server!');
