@@ -61,13 +61,13 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
 // Configuration of chat
-io.on('connection', function(socket){
-  console.log('a user connected');
+io.on('connection', function(socket) {
+    console.log('A client has just connected!!');
 
-  socket.on('chat message', function(message) {
-    console.log('message: ' + message);
-    socket.emit('server message', 'hi');
-  });
+    socket.on('client-to-server-message', function(message) {
+        console.log('Server received a message: ' + message);
+        socket.emit('server-to-client-message', 'hi, did you just say:' + message + '?');
+    });
 
 
 });
@@ -77,9 +77,5 @@ io.on('connection', function(socket){
 var mortgateListening = function() {
     console.log('Mortgate listening on *:3000');
 }
-
-server.listen(3000, mortgateListening );
-
-
-
+server.listen(3000, mortgateListening);
 module.exports = app;
