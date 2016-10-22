@@ -12,3 +12,4 @@ frontend/build
 frontend/.DS_Store
 frontend/.env
 frontend/npm-debug.log
+.DS_Store
