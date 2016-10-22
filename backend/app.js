@@ -4,7 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var routes = require('./routes/index');
+var chatRoutes = require('./routes/chat');
 
 var app = express();
 
@@ -22,7 +24,11 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// mongo connection setup
+global.db = mongoose.connect('mongodb://localhost/mortgate');
+
 app.use('/', routes);
+app.post('/api/chats', chatRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -30,8 +36,6 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
-
-
 
 // error handlers
 
@@ -74,10 +78,8 @@ io.on('connection', function(socket) {
 
 });
 
-
-
 var mortgateListening = function() {
-    console.log('Mortgate listening on *:3000');
+    console.log('Mortgate listening on *:3001');
 }
-server.listen(3000, mortgateListening);
+server.listen(3001, mortgateListening);
 module.exports = app;
