@@ -60,15 +60,16 @@ app.use(function(err, req, res, next) {
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
-
-
 // Configuration of chat
 io.on('connection', function(socket){
   console.log('a user connected');
 
   socket.on('chat message', function(message) {
     console.log('message: ' + message);
+    socket.emit('server message', 'hi');
   });
+
+
 });
 
 
