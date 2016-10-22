@@ -22,3 +22,18 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.pure-menu-selected .pure-menu-link,.pure-menu-selected .pure-menu-link:visited {
+  color: #fff;
+}
+
+.content {
+  min-height: 450px;
+  text-align: center;
+}
+
+.child-content {
+  margin: auto;
+  text-align: left; 
+  min-width: 300px;
+}
