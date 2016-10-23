@@ -12,13 +12,10 @@ var chatRoutes = require('./routes/chat');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 app.use(session({
-    secret: 'mortgate', 
-    name: 'mortgate.sid', 
-    resave: false, 
+    secret: 'mortgate',
+    name: 'mortgate.sid',
+    resave: false,
     saveUninitialized: false,
     store : store
 }));
@@ -156,7 +153,6 @@ io.on('connection', function(socket) {
 
     socket.on('client-to-server-message', function(message) {
         console.log('Server received a message: ' + message);
-        socket.emit('server-to-client-message', message);
 
         questions[questionCount].answer = message;
 

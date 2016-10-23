@@ -12,7 +12,6 @@
     "express": "~4.13.4",
     "express-load": "^1.1.15",
     "express-session": "^1.14.1",
-    "jade": "~1.11.0",
     "mongoose": "^4.6.4",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
