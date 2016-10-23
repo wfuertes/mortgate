@@ -31,14 +31,15 @@ export default class HomeBox extends React.Component {
             method: 'POST',
             url: '/api/chats',
             headers: {
+                "Accept" : "application/json",
                 "Content-Type" : "application/json"
             },  
             data: JSON.stringify(user)
         }).done(function(response) {
+            localStorage.setItem('sender', response.key);
             browserHistory.push('/chat');
-        }).fail(function(response, status) {
-            alert('erro dos bravos');
-            console.log('passei aqui'); 
+        }).fail(function(response, status, error) {
+            alert('Error when create a chat: ' + error.Message);
         });
     }
 
