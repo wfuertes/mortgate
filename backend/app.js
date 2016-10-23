@@ -84,6 +84,7 @@ function compareStringsIgnoringCase(string1, string2, ignoreCase) {
 
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
+var db = require('./repositories/db_connect')();
 
 var question0 = {
     pos: 0,
@@ -157,6 +158,8 @@ io.on('connection', function(socket) {
     socket.on('client-to-server-message', function(message) {
         console.log('Server received a message: ' + message);
         socket.emit('server-to-client-message', message);
+
+
 
         questions[questionCount].answer = message;
 
