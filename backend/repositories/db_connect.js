@@ -7,11 +7,11 @@ var env_url = {
 };
 
 module.exports = function() {
-    var url = env_url[process.env.NODE_ENV || env_url.development];
-  
+    var url = env_url[process.env.NODE_ENV || 'development'];
+
     if(!single_connection) {
-        single_connection = mongoose.connect('mongodb://localhost/mortgate');
+        single_connection = mongoose.connect(url);
     }
-  
+
     return single_connection;
 };

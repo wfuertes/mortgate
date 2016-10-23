@@ -1,49 +1,40 @@
-var express = require('express');
-var router = express.Router();
+var repository = require('../repositories/ChatRepository');
 
-var Chat = require('./../models/chat')();
-
-function prepareSuccessResponse(request, response, chat) {
+function _prepareSuccessResponse(request, response, chat) {
     request.session.chat = chat;
     response.setHeader("Location", "/api/chats/" + chat.email);
-    response.status(201).json("key : " + chat._id);
+    response.status(201).json({key : chat._id});
 }
 
-function createChat(req, res) {
+function _prepareErrorResponse(response, error) {
+    console.log(error);
+    response.status(500).json({error : error});
+}
+
+function _createChat(req, res) {
     var query = {
         email : req.body.email
     };
 
-    Chat.findOne(query)
-        .select('name email')
-        .exec((error, chat) => {
-            if(error) {
-                console.log(error);
-                res.status(500).json(erro);
-            }
-
+    repository.findOne(query)
+        .then(chat => {
             if(chat) {
-                prepareSuccessResponse(req, res, chat);
-            } else {
-                var newChat = {
-                    name : req.body.name,
-                    email : req.body.email
-                }
-
-                Chat.create(newChat, (error, chat) => {
-                    if(error) {
-                        console.log(error);
-                        res.status(500).json(erro);
-                    } else {
-                        prepareSuccessResponse(req, res, chat);
-                    }
-                });
+                _prepareSuccessResponse(req, res, chat);
+                return;
             }
-        });
+            
+            var newChat = {
+                name : req.body.name,
+                email : req.body.email
+            }
+
+            repository.create(newChat)
+                .then(chat => _prepareSuccessResponse(req, res, chat))
+                .catch(error => _prepareErrorResponse(res, error));
+        })
+        .catch(error => _prepareErrorResponse(res, error));
 }
 
-router.post('/api/chats', function(req, res) {
-    createChat(req, res);
-});
-
-module.exports = router;
+module.exports = (req, res) => {
+    _createChat(req, res);
+};
