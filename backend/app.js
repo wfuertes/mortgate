@@ -154,8 +154,8 @@ io.on('connection', function(socket) {
 
     socket.on('client-to-server-message', function(message) {
         console.log('Server received a message: ' + message);
-
-
+        var json = JSON.parse(message);
+        var message = json.text;
 
         questions[questionCount].answer = message;
 
@@ -194,7 +194,8 @@ io.on('connection', function(socket) {
             };
 
             //query
-            socket.emit('server-to-client-message', 'The best options for you are:' + questions);
+            //socket.emit('server-to-client-message', 'The best options for you are: ' + questions);
+            socket.emit('server-to-client-message', 'We found some good lenders for you');
             socket.emit('server-to-client-message', 'We are going send them your data and expect their call any moment now.');
             socket.disconnect(0);
         }

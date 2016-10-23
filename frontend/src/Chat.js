@@ -1,11 +1,13 @@
 import React from 'react';
 import io from 'socket.io-client';
 import './Chat.css';
+import $ from 'jquery';
 
 export default class ChatBox extends React.Component {
     constructor() {
         super();
         this._key = 0;
+        this._lastMessage = '';
         this.nextKey = this.nextKey.bind(this);
         this.state = { history: [], meMsg : ''};
         this.setMeMsg = this.setMeMsg.bind(this);
@@ -22,12 +24,27 @@ export default class ChatBox extends React.Component {
 
     componentDidMount() {
         this._socket.on('server-to-client-message', msg => {
+            this._lastMessage = msg;
+
             console.log('______________Receiving message from socket');
             console.log(msg);
+            
             this.setState({
                 history: [].concat(this.state.history, { author: 'bot', content: msg, id: this.nextKey() })
             });
         });
+    }
+
+    componentDidUpdate() {
+        // Update scroll at history
+        let history = document.getElementById('message-history');
+        history.scrollTop = history.scrollHeight;
+
+        // TODO: make a modal for end chat info.
+        if (this._lastMessage === 'We are going send them your data and expect their call any moment now.') {
+            alert('Thanks of your contact!');
+            $('.message-input').hide();
+        }
     }
 
     setMeMsg(event) {
@@ -54,7 +71,7 @@ export default class ChatBox extends React.Component {
                     <div className="chat-header">
                         Mortgate chatbot
                     </div>
-                    <div className="message-history">
+                    <div id="message-history" className="message-history">
                         <ul>
                             {
                                 this.state.history.map(function (m) {
