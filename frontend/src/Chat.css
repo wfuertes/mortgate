@@ -1,44 +1,62 @@
 .chat-content {
     margin: auto;
     width: 400px;
-    border: 2px solid cornflowerblue;
+    border: 2px solid #34495e;
 }
 
-.bot-profile {
+.chat-header {
     margin: 0px;
+    height: 30px;
     color: white;
     font-size: 18px;
-    background: darkslategray;
+    color: #1a1a1a;
+    font-weight: 600;
+    line-height: 30px;
+    background-color: #eceff1;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .message-history {
     margin: 0px;
     height: 300px;
-    background: silver;
-    overflow-y: scroll;
+    font-size: 14px;
     overflow-x: none;
+    overflow-y: scroll;
+    padding: 5px 10px 5px 5px;
 }
 
 .message-history > ul {
   margin: 0px;
-  padding: 0px 0px 0px 10px;
   text-align: left;
   list-style-type: none;
+  padding: 0px 0px 0px 10px;
 }
 
-.message-history > ul > li.you {
+.message-history > ul > li.me {
+  text-align: left;
   color: royalblue;
-  font-weight: bolder;
+  font-weight: 500;
 }
 
 .message-history > ul > li.bot {
+  text-align: right;
   color: slategray;
+  font-weight: 500;
 }
 
 .message-input {
     padding-top: 5px;
+    border-top: 2px solid #34495e;
 }
 
-.message-input > textarea {
-    
+.message-input > input[type=text] {
+    border: 0;
+    width: 100%;
+    height: 40px;
+    padding: 0px 5px 0px 5px;
+    outline: none;
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Source Sans Pro', sans-serif;
 }

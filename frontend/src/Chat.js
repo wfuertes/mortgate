@@ -7,37 +7,37 @@ export default class ChatBox extends React.Component {
             <div className="content">
                 <h2 className="content-head is-center">MORTGATE super chat</h2>
                 <div className="chat-content">
-                    <div className="bot-profile">
-                        I'm the ChatBot!
+                    <div className="chat-header">
+                        Mortgate chatbot
                     </div>
                     <div className="message-history">
                         <ul>
-                            <li className="you">2016/10/01 16:44 (you): bla bla bla bla bla</li>
-                            <li className="bot">2016/10/01 16:45 (bot): blw ble ble ble bla</li>
-                            <li className="bot">2016/10/01 16:46 (bot): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:47 (you): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:44 (you): bla bla bla bla bla</li>
-                            <li className="bot">2016/10/01 16:45 (bot): blw ble ble ble bla</li>
-                            <li className="bot">2016/10/01 16:46 (bot): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:47 (you): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:44 (you): bla bla bla bla bla</li>
-                            <li className="bot">2016/10/01 16:45 (bot): blw ble ble ble bla</li>
-                            <li className="bot">2016/10/01 16:46 (bot): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:47 (you): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:44 (you): bla bla bla bla bla</li>
-                            <li className="bot">2016/10/01 16:45 (bot): blw ble ble ble bla</li>
-                            <li className="bot">2016/10/01 16:46 (bot): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:47 (you): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:44 (you): bla bla bla bla bla</li>
-                            <li className="bot">2016/10/01 16:45 (bot): blw ble ble ble bla</li>
-                            <li className="bot">2016/10/01 16:46 (bot): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:47 (you): bla bla bla bla bla</li>
-                            <li className="you">2016/10/01 16:44 (you): bla bla bla bla bla</li>
-                            <li className="bot">2016/10/01 16:45 (bot): blw ble ble ble bla</li>
+                            <li className="me">me: bla bla bla bla bla</li>
+                            <li className="bot">blw ble ble ble bla :bot</li>
+                            <li className="bot">bla bla bla bla bla :bot</li>
+                            <li className="me">me: bla bla bla bla bla</li>
+                            <li className="me">me: bla bla bla bla bla</li>
+                            <li className="bot">blw ble ble ble bla :bot</li>
+                            <li className="bot">bla bla bla bla bla :bot</li>
+                            <li className="me">me: bla bla bla bla bla</li>
+                            <li className="me">me: bla bla bla bla bla</li>
+                            <li className="bot">blw ble ble ble bla :bot</li>
+                            <li className="bot">bla bla bla bla bla :bot</li>
+                            <li className="me">me: bla bla bla bla bla</li>
+                            <li className="me">me: bla bla bla bla bla</li>
+                            <li className="bot">blw ble ble ble bla :bot</li>
+                            <li className="bot">bla bla bla bla bla :bot</li>
+                            <li className="me">me: bla bla bla bla bla</li>
+                            <li className="me">me: bla bla bla bla bla</li>
+                            <li className="bot">blw ble ble ble bla :bot</li>
+                            <li className="bot">bla bla bla bla bla :bot</li>
+                            <li className="me">me: bla bla bla bla bla :bot</li>
+                            <li className="me">me: bla bla bla bla bla :bot</li>
+                            <li className="bot">blw ble ble ble bla :bot</li>
                         </ul>
                     </div>
                     <div className="message-input">
-                        <textarea />
+                        <input type="text" id="name" value="" placeholder="Type your message here" />
                     </div>
                 </div>
             </div>
