@@ -32,7 +32,7 @@ export default class HomeBox extends React.Component {
             url: '/api/chats',
             headers: {
                 "Content-Type" : "application/json"
-            },
+            },  
             data: JSON.stringify(user)
         }).done(function(response) {
             browserHistory.push('/chat');
