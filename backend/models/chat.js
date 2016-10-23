@@ -1,4 +1,5 @@
-module.exports = app => {
+module.exports = function() {
+    var db = require('./../libs/db_connect')();
     var Schema = require('mongoose').Schema;
 
     var message = Schema({
